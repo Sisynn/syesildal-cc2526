@@ -1,17 +1,21 @@
 PROGRAM verlet
   IMPLICIT NONE !  inline comment
-  ! declare your variable here
+   ! declare your variable here
   INTEGER, PARAMETER :: wp = SELECTED_REAL_KIND (p=13, r=300)
-  REAL (KIND = wp) :: tau
+  REAL (KIND=wp) :: verlet
+  REAL (KIND = wp) :: tau 
   REAL (KIND = wp), DIMENSION(:), ALLOCATABLE :: f_a, f_ap
   REAL (KIND = wp) :: m
   REAL (KIND = wp), DIMENSION(:), ALLOCATABLE :: pos_k, pos_kp
   REAL (KIND = wp), DIMENSION(:), ALLOCATABLE :: v_k, v_kp
   INTEGER :: k, n
+  
+
   ! write your instructions here
   ALLOCATE(f_a(3)) !vector with 3 elements
   ALLOCATE(pos_k(3))
   ALLOCATE(pos_kp(3))
+  ALLOCATE(npos_kp(3))
   ALLOCATE(v_k(3))
   ALLOCATE(v_kp(3))
 
@@ -33,8 +37,7 @@ PROGRAM verlet
 
    pos_k = pos_kp
    v_k = v_kp
-
   ENDDO
 
-
+ 
 END PROGRAM verlet
